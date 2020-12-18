@@ -1,3 +1,4 @@
+
 /**
  * User.js
  *
@@ -35,23 +36,22 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
   },
 
-  beforeCreate: function(user, cb){
+  beforeCreate: function (user, cb) {
     bcrypt.genSalt(10, (err, salt) => {
-      if(err) { return cb(err); }
+      if (err) { return cb(err); }
       bcrypt.hash(user.password, salt, (err, hash) => {
-        if(err) { return cb(err); }
+        if (err) { return cb(err); }
         user.password = hash;
         return cb();
       });
     });
   },
 
-  signup: function(inputs, cb) {
+  signup: function (inputs, cb) {
     User.create({
       username: inputs.username,
       password: inputs.password
     })
-    .exec(cb);
+      .exec(cb);
   }
 };
-

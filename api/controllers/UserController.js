@@ -5,26 +5,39 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+const passport = require("passport")
+
 module.exports = {
 
   /**
    * `UserController.login()`
    */
   login: async function (req, res) {
-    throw 'Miaouss';
+    console.log("login test")
+    passport.authenticate('local', function (err, user, info) {
+      if ((err) || (!user)) {
+        console.log(err)
+        return res.redirect("/login")
+      } req.logIn(user, function (err) {
+        if (err) res.send(err);
+        return res.redirect("/");
+      });
+    })(req, res);
   },
 
   /**
    * `UserController.logout()`
    */
   logout: async function (req, res) {
-    throw 'Not implemented';
+    req.logout();
+    res.redirect("/login")
   },
 
   /**
    * `UserController.signup()`
    */
   signup: async function (req, res) {
+    console.log("signup test")
     User.signup({
       username: req.param('username'),
       password: req.param('password'),
@@ -37,4 +50,3 @@ module.exports = {
     });
   }
 };
-
