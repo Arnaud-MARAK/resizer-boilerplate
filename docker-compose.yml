@@ -10,7 +10,7 @@ services:
     command: "npm run dev"
     volumes:
       - ./:/app
-    database:
+  database:
     image: mysql:5.7
     environment:
       - MYSQL_DATABASE=sails_mysql

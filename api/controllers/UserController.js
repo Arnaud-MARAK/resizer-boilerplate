@@ -5,7 +5,22 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
-const passport = require("passport")
+
+
+// const db mysql.creatConnection({
+
+//   host: 'sails@localhost:1337/sails_mysql',
+//   user: 'sails',
+//   password: 'sails'
+// });
+
+// db.connect(function (err) {
+
+//   if (err) throw err;
+
+//   console.log("Connecté à la base de données MySQL!");
+
+// });
 
 module.exports = {
 
